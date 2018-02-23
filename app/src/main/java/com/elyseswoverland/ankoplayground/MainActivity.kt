@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
         info("MainActivity shown")
 
         ui.button.setOnClickListener {
-            showAlert(ui.name.text.toString())
+            startActivity<FloatingActivity>()
         }
     }
 
