@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         ui.button.setOnClickListener {
             alert(Appcompat, "Hello, ${ui.name.text}!", "Important Message") {
-                positiveButton("Hi, you!") {}
+                positiveButton("Well hi!") {}
             }.show()
         }
     }
