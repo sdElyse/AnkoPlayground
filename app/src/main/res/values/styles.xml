@@ -9,6 +9,7 @@
         <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
         <item name="android:buttonStyle">@style/RobotoButtonStyle</item>
         <item name="buttonStyle">@style/RobotoButtonStyle</item>
+        <item name="android:windowContentTransitions">true</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
     </style>
 

@@ -1,11 +1,17 @@
 package com.elyseswoverland.ankoplayground
 
+import android.arch.lifecycle.LifecycleObserver
+import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
+import android.support.v4.view.ViewCompat
 import android.support.v7.app.AppCompatActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.Appcompat
 
-class MainActivity : AppCompatActivity(), AnkoLogger {
+
+
+class MainActivity : AppCompatActivity(), AnkoLogger, LifecycleObserver {
     lateinit var ui: MainActivityUi
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +22,12 @@ class MainActivity : AppCompatActivity(), AnkoLogger {
         info("MainActivity shown")
 
         ui.button.setOnClickListener {
-            startActivity<FloatingActivity>()
+//            startActivity<FloatingActivity>()
+            val intent = Intent(this@MainActivity, FloatingActivity::class.java)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity,
+                    ui.teabagImage,
+                    ViewCompat.getTransitionName(ui.teabagImage))
+            startActivity(intent, options.toBundle())
         }
     }
 
