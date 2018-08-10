@@ -11,18 +11,18 @@ import org.jetbrains.anko.*
  * on 2/23/18.
  */
 class FloatingActivityUi : AnkoComponent<FloatingActivity> {
-    lateinit var teabagImage: ImageView
+    lateinit var circularGraph: ImageView
     override fun createView(ui: AnkoContext<FloatingActivity>): View = ui.apply {
         relativeLayout {
             verticalLayout {
                 backgroundDrawable = ContextCompat.getDrawable(ctx,
                         R.drawable.rounded_white_background)
 
-                teabagImage = imageView(R.drawable.tea) {
+                circularGraph = imageView(R.drawable.circulargraph) {
                     scaleType = ImageView.ScaleType.FIT_XY
                     transitionName = "simple_activity_transition"
-                }.lparams(width = 600, height = 600) {
-                    gravity = Gravity.CENTER_HORIZONTAL
+                }.lparams(width = 300, height = 300) {
+                    gravity = Gravity.START
                 }
             }.lparams(width = matchParent, height = matchParent) {
                 topMargin = dip(150)

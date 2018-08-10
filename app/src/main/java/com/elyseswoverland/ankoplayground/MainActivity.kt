@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.view.ViewCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.WindowManager
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.Appcompat
 
@@ -19,14 +20,24 @@ class MainActivity : AppCompatActivity(), AnkoLogger, LifecycleObserver {
         ui = MainActivityUi()
         ui.setContentView(this)
 
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS or WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+
+        if (intent.getStringExtra("data") != null) {
+            val message = intent.getStringExtra("data")
+            val appDialog = alert(Appcompat, message) {
+                positiveButton("OK") {}
+            }.show()
+        }
+//        info(message)
+
         info("MainActivity shown")
 
         ui.button.setOnClickListener {
 //            startActivity<FloatingActivity>()
             val intent = Intent(this@MainActivity, FloatingActivity::class.java)
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this@MainActivity,
-                    ui.teabagImage,
-                    ViewCompat.getTransitionName(ui.teabagImage))
+                    ui.circularGraph,
+                    ViewCompat.getTransitionName(ui.circularGraph))
             startActivity(intent, options.toBundle())
         }
     }

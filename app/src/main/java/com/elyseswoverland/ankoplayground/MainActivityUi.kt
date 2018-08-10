@@ -14,27 +14,29 @@ import org.jetbrains.anko.*
 class MainActivityUi : AnkoComponent<MainActivity> {
     lateinit var name: EditText
     lateinit var button: Button
-    lateinit var teabagImage: ImageView
+    lateinit var circularGraph: ImageView
     override fun createView(ui: AnkoContext<MainActivity>): View = ui.apply {
         relativeLayout {
             verticalLayout {
                 name = editText {
                     hint = "Name"
+                    visibility = View.GONE
                 }.lparams(width = matchParent) {
                     marginStart = dip(16)
                     marginEnd = dip(16)
                 }
-                button = button("Say Hello") {
-//                    onClick { ctx.toast("Hello, ${name.text}!") }
+                circularGraph = imageView(R.drawable.circulargraph) {
+                    //                    scaleType = ImageView.ScaleType.FIT_XY
+                    transitionName = "simple_activity_transition"
+                }.lparams(width = 1000, height = 1000) {
+                    gravity = Gravity.CENTER_HORIZONTAL
+                    bottomMargin = dip(64)
+                }
+                button = button("Go") {
+                    //                    onClick { ctx.toast("Hello, ${name.text}!") }
                 }.lparams(width = matchParent) {
                     marginStart = dip(64)
                     marginEnd = dip(64)
-                }
-                teabagImage = imageView(R.drawable.tea) {
-//                    scaleType = ImageView.ScaleType.FIT_XY
-                    transitionName = "simple_activity_transition"
-                }.lparams(width = 300, height = 300) {
-                    gravity = Gravity.CENTER_HORIZONTAL
                 }
             }.lparams(width = matchParent, height = wrapContent) {
                 centerInParent()
